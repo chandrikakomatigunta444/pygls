@@ -1,0 +1,516 @@
+2022-04-29 3.9
+
+[FRONTEND]
+
+* Add sys_upload_dir writability check in testconfig.php.
+
+* Add new preables to group preferences, Savannah sr #110528.
+
+* Switch to single-column layout in Account Conf, Savannah sr #109699.
+
+* Add preview to original submissions in trackers, Savannah sr #109413.
+
+* Process canned response and comment type in preview.
+
+* Bug fixes:
+
+** Fix JavaScript-related regressions, Savannah sr #110630.
+
+** Make sure that uploaded files aren't overwritten, Savannah sr #109422.
+
+** In emails reporting tracker activity, ordered lists weren't enumerated
+   for original submissions, Savannah sr #110621.
+
+[DOCUMENTATION]
+
+* Drop obsolete info.
+
+[BUILD]
+
+* Regenerate ChangeLog from git automatically.
+
+[I18N]
+
+* Update Russian.
+
+* Update French, Hebrew from the TP.
+
+2022-04-01 3.8
+
+[FRONTEND]
+
+* Group names 'bug', 'help', 'info' are disallowed: their mailing
+  lists ("info-gnu") could conflict with standard GNU names.
+
+* init.php takes into account autoconfigured value of $sysconfdir.
+
+* Drop support for mysql extention; always use mysqli.
+
+* Rewrite user-supplied parameter sanitizing framework.
+
+* In /project/admin/editgroupnotifications.php, show intro
+  for the first tracker, Savannah sr #110333.
+
+* In emails reporting tracker comments, ordered lists
+  are enumerated, Savannah sr #110621.
+
+* On the login page, don't ask whether to stay in HTTPS.
+
+* Irrelevant texts were removed from group register confirmation
+  page.
+
+* Names of removed squads can be used for new squads.
+
+* Support for legacy locations for site-specific texts was dropped.
+
+* Don't add user agent and REMOTE_ADDR to headers when sending mails,
+  Savannah sr #110592.
+
+* Remove link to cookbook from sidebar, disable cookbook search.
+
+* Support protocol-relative links in markup.
+
+* Preserve first space in line in markup, Savannah sr #110562.
+
+* Bug fixes:
+
+** Tracker comment numbering was wrong when some comments were marked as spam.
+
+** Comments with removed comment_type were invisible.
+
+** History for removing cross-tracker dependencies were written incorrectly.
+
+** Users who couldn't post resume couldn't also enable skillboxes; now
+   setting skillboxes is allowed for all users.
+
+** Markup:
+
+*** Fix processing of '@':  URLs like www.example.org/a@b.html
+    produced links like
+    <a href="http://www.example.org/a">www.example.org/a</a>@b.html
+
+*** Unclosed +verbatim+ blocks didn't show up, Savannah sr #110626.
+
+** Emails in "Replaced by" in tracker item history weren't hidden
+   for anonymous visitors.
+
+[DOCUMENTATION]
+
+* Update REQUIREMENTS.
+
+[BUILD]
+
+* Make distcheck work.
+
+[SAMPLE LOCAL INSTANCE]
+
+* Add $sys_gpg_name to local2/etc-savane/.savane.conf.php; update
+  $sys_unix_group_name and notes on mock-up db.
+
+[BACKEND]
+
+* Add dummy savane.conf.pl installed by default to let basic tests run.
+
+* Install Perl modules to $libexec, make them runnable
+  with --help and --version options.
+
+* Add path to Savane Perl modules to Perl scripts.
+
+* Remove obsolete files.
+
+[I18N]
+
+* Update Russian.
+
+* Add Hebrew from TP.
+
+* Update French and "Simplified" Chinese from TP.
+
+[SITE-SPECIFIC CONTENT]
+
+* Remove obsolete files from etc/ and
+  frontend/php/site-specific/gnu-content/faq/.
+
+* Update bzr info, Savannah task #9943.
+
+* Move FAQ link up in site help menu.
+
+2021-10-05 3.7
+
+[FRONTEND]
+
+* Make CVS admin page usable and accessible from group pages.
+
+* New DEVEL_STATUS, Decommissioned.
+
+[BACKEND]
+
+* Fully maintain Savane CVS hooks in sv_groups.
+
+[I18N]
+
+* Update French and "Simplified" Chinese from TP.
+
+* Update Russian.
+
+2021-03-23 3.6
+
+[FRONTEND]
+
+* Fix search, Savannah sr #110244.
+
+* Add release keyring to group preferences, display it instead of concatenated
+  personal keys.
+
+* Add selectable default query for trackers, Savannah sr #109504.
+
+* Add new tracker restriction level to make them read-only.
+
+* Fix tracker submenu for the case when an alternative URL is used.
+
+* Various PHP-related fixes.
+
+* Minor documentation fixes and updates.
+
+* Add a distinct domain for user-supplied files to improve security.
+
+* Make sure that user_name is unique when renaming accounts.
+
+* Show diagnostics when lost user-supplied files are requested.
+
+* Fix markdown link processing, Savannah sr #110128.
+
+* Fix a few vulnerabilities.
+
+* Fix restrictions on having resume.
+
+* Account "real" names are checked against forbidden templates.
+
+* Add a means to pre-fill new item submissions, Savannah sr #109904.
+
+* Fix handling date fields in tracker comment previews.
+
+* Avoid login redirections to external websites.
+
+* Decode HTML entities in fields, Savannah sr #109857.
+
+* Add a list of recent anonymous posts to the siteadmin area.
+
+* Add a list of account activities to user account page in the siteadmin area.
+
+* Notify users when removing idle accounts, Savannah sr #109838.
+
+* Improve output of invalid user IDs on user pages.
+
+* Fix reverse dependency history, Savannah sr #109698.
+
+[I18N]
+
+* Enable Portuguese.
+
+[BACKEND]
+
+* Drop group GPG keyring-related dead code.
+
+[DATABASE]
+
+* Convert group_preferences.preference_value to mediumtext to hold group
+  GPG release keys.
+
+2019-07-05 3.5
+
+[FRONTEND]
+
+* Actually make it run on PHP 7.0: use mysqli_* instead of mysql_*
+  when available, replace a few other functions.
+
+* Add 'quote' buttons to trackers.
+
+* Add /markup-test.php page with an updated markup documentation
+  and a test facility.  Improve markup rendering.
+
+* Fix 'Clean Reload' and 'Printer Version' links for pages like
+  /p/www-tr and /u/rms.
+
+* Improve footer and menu text readability in some themes.
+
+* Fix group registration page.
+
+* Serve all images from the same website, remove the CSP exception
+  for images.
+
+* Improve registration template HTML.
+
+* Make theme selection logic more consistent: rely primarily
+  on user's preferences and only use cookies when the user
+  is anonymous.
+
+* Add test for cgitrepos on /testconfig.php.
+
+* Fix a 12 years old bug on Squad Administration page.
+
+* Sanitize user-supplied attachment filenames; fix rendering of
+  existings files with HTML special characters in their name.
+
+* Fix spacing in header fields of emails with non-ASCII characters.
+
+* Add links to browsing additional Git repositories to group's pages.
+
+* Include VCS host fingerprint on "Use Git" and "Use Hg" pages.
+
+* Fix processing tracker queries that contain no bug id.
+
+* Remove shadows under <h?> elements.
+
+* Fix nextprev url, Savannah sr #109673.
+
+* Add a configuration variable for GPG executable.
+
+* Fix tracker preview: it didn't preserve fields like 'Status' changed
+  by the user.
+
+* Enforce restrictions on "real names" of users: disallow '",<
+
+* Convert 'unavailable' links from <a> to <del>.
+
+* Move GPLv3+ to the top of license list.
+
+* Fix feedback on query form edit page.
+
+* Rewrite Export to work syncrhonously, without the need for cron jobs.
+
+* Add a control for site admins to rename accounts.
+
+* Remove accounts more aggressively: set username to _<account_no>,
+  drop "Delete" vs. "Suspend" distinction. [anti-spam]
+
+* Don't let users add resume until they join to any group. [anti-spam]
+
+* Show site admins previous user names and link to the account when
+  deleting accounts.
+
+* Differentiate self-removed accounts from admin-removed accounts using
+  "real name".
+
+* Add user markers when exporting group GPG keyring to show whose
+  keys are listed in which place.
+
+* In email notifications from trackers, add URLs of attached files.
+
+* On user's page, add links for editing account for site admins.
+
+[I18N]
+
+* Update French translation from the TP.
+
+* Update Russian translation.
+
+[BACKEND]
+
+* Clear idle accounts in sv_cleaner.in. [anti-spam]
+
+* Fix time calculations in sv_cleaner.in.
+
+* Remove obsolete tasks in sv_cleaner.in.
+
+* Add 'cookbook' to tracker list in sv_cleaner.in.
+
+[CONFIGURATION]
+
+* Fix gettext detection.
+
+[BUILD]
+
+* Use configured value of MSGMERGE.
+
+2019-01-09 3.4
+
+[CONFIGURATION]
+
+* Tarball name is fixed: savannah -> savane.
+
+[I18N]
+
+* Update translations from TranslationProject.
+
+* Enable French, Russian and Spanish translations.
+
+* Make context_icon alt attribute localizable.
+
+[FRONTEND]
+
+* Improve page handling user's GPG keys.  Add a means to test submitted
+  keys.
+
+* Multiple cosmetic HTML improvements.
+
+* Show shorter dates in trackers when possible; render full dates
+  with ISO format.
+
+* Fix HTML errors found with HTML_CodeSniffer.
+
+* Fix handling user input per OBB-636261 and OBB-647866.
+
+* Use HTTPS URLs in email notifications.
+
+* Drop logging user's IPs.
+
+* Disallow emgedding in frames; move JavaScript and styles to separate
+  files; add a CSP header.
+
+* Fix a few bugs.
+
+* Make the code PHP 7.0-compatible:
+
+** Avoid reserved names.
+
+** Eliminate egreg*.
+
+* Use user_delete to delete users instead of settings their status
+  to 'D'.
+
+[BACKEND]
+
+* sv_membersh: prevent user from breaking out of scp-restricted shell
+
+2018-05-20 3.3
+
+[I18N]
+
+* Missing in 3.2: savane.pot is updated.
+
+2018-05-20 3.2
+
+[FRONTEND]
+
+* Multiple typo fixes.
+
+* Language selection is rewritten. New way to select language is added
+  for the case when regular browser means don't work.
+
+* Most strings to i18n are reviewed, translator's comments are added.
+
+* Comment preview is implemented for trackers.
+
+* A few PHP notices and warnings are fixed.
+
+* Some dead links are removed.
+
+* In Markup, named links to trackers are supported, like
+  [task #4913 our most important task] and
+  [comment #289 my second reply].
+
+* When deleting account, non-active groups are ignored
+  per Savannah Task #14513.
+
+* OBB-296182 is fixed.
+
+* Getting group keyring was fixed per Savannah sr #109450.
+
+* Due to a MySQL bug, some Unicode characters didn't display
+  in tracker comments correctly, per Savannah sr #109450.
+
+* When registering a new user account, a message explaining
+  what the confirmation email looks like is shown,
+  per Savannah sr #109310.
+
+* Account Configuration -> Change GPG Key:
+  a sample key is shown to explain what it should look like;
+  a button to test the submitted key is added.
+
+* Some fixes in CSS.
+
+* In Markup, URL parts like "*checkout*" were shown in bold.
+
+[SITE-SPECIFIC CONTENT]
+
+* Webpages (including "site-specific content") are imported to Git;
+  they are localized together with frontend messages.
+
+* Apache 2.0 is added to license list.
+
+* Add SHA256 VCS server SSH key fingerprints to MD5 ones.
+
+2017-05-23 3.1-cleanup2
+
+[CONFIGURATION]
+
+* .mo (translation files) will be installed in /usr/local/share/locale
+  by default, and the $sys_localedir configuration variable should be
+  set accordingly.
+
+* $sys_appdatadir (default "/var/lib/savane") and
+  $sys_trackers_attachments_dir (default
+  "$sys_appdatadir/trackers_attachments")
+
+* The behavior of SCP changed somewhere between OpenSSH 5.2 and 5.5
+  (inclusive).  It now passes an extra '--' argument before the copy
+  destination.  You may need to adapt your '$regexp_scp' in
+  '/etc/membersh-conf.pl'.
+
+
+[SITE-SPECIFIC CONTENT]
+
+* git/index.txt added: displayed in /git/index.php
+
+* hg/index.txt added: displayed in /hg/index.php
+
+* bzr/index.txt added: displayed in /bzr/index.php
+
+* account/login.txt added: displayed in /account/login.php
+
+[FRONTEND]
+
+* New TextCHA antispam in the user registration process.
+
+
+[BACKEND]
+
+* Git, Mercurial and Bazaar support.	
+
+
+[DATABASE STRUCTURE]
+
+* Store trackers attachments on the filesystem. On large sites such as
+  Savannah, there are now ~17000 files totalling >400MB, which becomes
+  inconvient to handle (huge dumpfiles, etc.). The migration script
+  stores files in /var/lib/savane/trackers_attachments by
+  default. Files are named after their file_id, to avoid naming issues
+  (duplicates, security, simplicity, etc.)
+
+
+[DEVELOPER NOTES]
+
+* Code compatible with PHP5
+
+* Cleaner PHP code (less warnings, allowing to look for real issues)
+
+* More secure input validation (prevents SQL injections and CSRF);
+  works with register_globals=off and magic_quotes=off.
+
+* Test Savane on http://localhost:50080/ with single line:
+    make -C tests/minimal_configs/
+
+* Build system based on autoconf & automake, plus MakeMaker for the
+  Perl library
+
+* Full UTF-8 database (including declarations and ordering)
+
+================================================================
+Copyright (C) 2017, 2018, 2019, 2021, 2022 Ineiev
+Copyright (C) 2007, 2009, 2010 Sylvain Beucler
+
+This file is part of Savane.
+
+Savane is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+Savane is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
